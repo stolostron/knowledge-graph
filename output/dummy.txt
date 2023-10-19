@@ -1,0 +1,1 @@
+This directory will be empty in git. When code is the run on the user machine, the output files will go here.

@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+output/*.png
+output/*.csv
+output/*.txt
+!output/dummy.txt
+.DS_Store
+
