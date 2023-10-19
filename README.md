@@ -16,7 +16,7 @@
 
 ## To run:
 1. `git clone` this repo.
-1. Put your xml file describing the relationship in 1. knowledge-graph/input dir
+1. Put your xml file describing the relationship in `knowledge-graph/input` dir. This currently has 2 samples to test out the process.
 1. ```cd knowledge-graph```
 1. ```python src/main.py```
 1. This will create the graphs in knowledge-graph/output dir
