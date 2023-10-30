@@ -30,14 +30,17 @@
     </node>
     <node id="5">
       <data key="d0">Pos</data>
+      <data key="d1">Pos</data>
       <data key="d3">False</data>
     </node>
     <node id="6">
       <data key="d0">Transaction</data>
+      <data key="d1">Tx</data>
       <data key="d4">False</data>
     </node>
     <node id="22">
       <data key="d0">SocialMedia</data>
+      <data key="d1">SMedia</data>
       <data key="d5">john_doe</data>
       <data key="d6">Facebook</data>
       <data key="d7">2000</data>

@@ -54,9 +54,9 @@ def saveGraph(propGraph,filename):
         )  
 
         # Draw node labels
-        node_labels = nx.get_node_attributes(propGraph, "label")
+        node_labels = nx.get_node_attributes(propGraph, "name")
         nx.draw_networkx_labels(propGraph, pos,labels=node_labels,  font_size=14)
-
+        
         # Draw edge labels
         nx.draw_networkx_edge_labels(propGraph, pos)
 
