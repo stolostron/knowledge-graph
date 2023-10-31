@@ -1,0 +1,181 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="verb" for="edge" attr.name="verb" attr.type="string" />
+  <key id="userCreated" for="node" attr.name="userCreated" attr.type="boolean" />
+  <key id="onHub" for="node" attr.name="onHub" attr.type="boolean" />
+  <key id="onManaged" for="node" attr.name="onManaged" attr.type="boolean" />
+  <key id="replicas" for="node" attr.name="replicas" attr.type="int" />
+  <key id="name" for="node" attr.name="name" attr.type="string" />
+  <key id="label" for="node" attr.name="label" attr.type="string" />
+  <key id="type" for="node" attr.name="type" attr.type="string" />
+  <key id="namespace" for="node" attr.name="namespace" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="1">
+      <data key="label">Deployment</data>
+      <data key="name">grc-policy-propagator</data>
+      <data key="userCreated">false</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+      <data key="namespace">open-cluster-management</data>
+      <data key="replicas">2</data>
+    </node>
+    <node id="2">
+      <data key="label">Policy</data>
+      <data key="name">policy-sample</data>
+      <data key="userCreated">true</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>
+    <node id="3">
+      <data key="label">Deployment</data>
+      <data key="name">policy-framework</data>
+      <data key="namespace">open-cluster-management-agent-addon</data>
+      <data key="replicas">1</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="4">
+      <data key="label">Event</data>
+      <data key="namespace">ManagedCluster Namespace</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="6">
+      <data key="label">Deployment</data>
+      <data key="name">config-policy-controller</data>
+      <data key="namespace">open-cluster-management-agent-addon</data>
+      <data key="replicas">1</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="7">
+      <data key="label">Policy</data>
+      <data key="name">policy-sample</data>
+      <data key="userCreated">false</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="8">
+      <data key="label">PolicyAutomation</data>
+      <data key="name">policy-sample-policy-automation</data>
+      <data key="userCreated">true</data>
+      <data key="type">Ansible</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>
+    <node id="9">
+      <data key="label">PlacementBinding</data>
+      <data key="name">binding-policy-sample</data>
+      <data key="userCreated">true</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>
+    <node id="10">
+      <data key="label">Placement</data>
+      <data key="name">placement-policy-sample</data>
+      <data key="userCreated">true</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>
+    <node id="18">
+      <data key="label">CertificatePolicy</data>
+      <data key="name">policy-cert-sample</data>
+      <data key="type">Policy Template</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="19">
+      <data key="label">ConfigurationPolicy</data>
+      <data key="name">policy-config-sample</data>
+      <data key="type">Policy Template</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="20">
+      <data key="label">Deployment</data>
+      <data key="name">cert-policy-controller</data>
+      <data key="namespace">open-cluster-management-agent-addon</data>
+      <data key="replicas">1</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="21">
+      <data key="label">Deployment</data>
+      <data key="name">iam-policy-controller</data>
+      <data key="namespace">open-cluster-management-agent-addon</data>
+      <data key="replicas">1</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="22">
+      <data key="label">IAMPolicy</data>
+      <data key="name">policy-iam-sample</data>
+      <data key="type">Policy Template</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
+    <edge source="1" target="2">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="1" target="7">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="1" target="8">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="1" target="9">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="1" target="10">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="6" target="7">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="1" target="2">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="1" target="7">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="6" target="7">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="6" target="19">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="20" target="18">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="21" target="22">
+      <data key="verb">Watches</data>
+    </edge>
+    <edge source="6" target="19">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="20" target="18">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="21" target="22">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="3" target="19">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="3" target="18">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="3" target="22">
+      <data key="verb">Updates</data>
+    </edge>
+    <edge source="6" target="4">
+      <data key="verb">Creates</data>
+    </edge>
+    <edge source="20" target="4">
+      <data key="verb">Creates</data>
+    </edge>
+    <edge source="21" target="4">
+      <data key="verb">Creates</data>
+    </edge>
+  </graph>
+</graphml>
