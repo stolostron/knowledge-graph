@@ -47,16 +47,19 @@ def saveGraph(propGraph,filename):
         #current_dir = os.getcwd()
         current_dir = os.path.dirname(os.path.abspath(__file__))
         #pos = nx.spectral_layout(propGraph) 
-        pos = nx.shell_layout(propGraph)
+        #pos = nx.shell_layout(propGraph)
+        #pos = nx.spring_layout(propGraph)
+        pos = nx.planar_layout(propGraph)
 
+        plt.figure(1, figsize=(12,10), dpi=100)
         nx.draw(
-            propGraph, pos, node_size=700,arrows=True,node_color="skyblue"
+            propGraph, pos, node_size=800,arrows=True,node_color="skyblue"
         )  
 
         # Draw node labels
-        node_labels = nx.get_node_attributes(propGraph, "name")
-        nx.draw_networkx_labels(propGraph, pos,labels=node_labels,  font_size=14)
-        
+        node_labels = nx.get_node_attributes(propGraph, "label")
+        nx.draw_networkx_labels(propGraph, pos,labels=node_labels,  font_size=16)
+
         # Draw edge labels
         nx.draw_networkx_edge_labels(propGraph, pos)
 
