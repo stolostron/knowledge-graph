@@ -1,0 +1,17 @@
+# Add only unique entries that don't duplicate the meaning of an existing entry
+Category
+CertificatePolicy
+ConfigurationPolicy
+CreditCard
+Deployment
+Event
+IAMPolicy
+Person
+Placement
+PlacementBinding
+Policy
+PolicyAutomation
+Pos
+SocialMedia
+Store
+Transaction
