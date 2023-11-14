@@ -44,8 +44,13 @@ def main():
               #print_graph(driver)
               add_graph(driver,graphList)
               driver.close()
-    except:
+    except IOError as e :
+        print("Exception encountered: ",e)
         print("Error: No .env file found - Therefore cannot connect to neo4j. However, we will continue to process the graph.")
+       
+    except Exception as e :
+        print("Exception encountered: ",e)
+        #print("Error: No .env file found - Therefore cannot connect to neo4j. However, we will continue to process the graph.")
         #sys.exit(1)   
          
 
