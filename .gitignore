@@ -6,5 +6,6 @@ output/*.txt
 !output/dummy.txt
 .DS_Store
 src/.env
+.env
 
 
