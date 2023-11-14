@@ -5,4 +5,6 @@ output/*.csv
 output/*.txt
 !output/dummy.txt
 .DS_Store
+src/.env
+
 
