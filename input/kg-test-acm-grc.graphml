@@ -18,7 +18,7 @@
       <data key="namespace">open-cluster-management</data>
     </node>
     <node id="2">
-      <data key="entity">Custom Resource</data>
+      <data key="entity">CustomResource</data>
       <data key="name">Policy</data>
       <data key="userCreated">true</data>
       <data key="onHub">true</data>
@@ -32,8 +32,8 @@
       <data key="onManaged">true</data>
     </node>
     <node id="4">
-      <data key="entity">API</data>
-      <data key="name">Event</data>
+      <data key="entity">Event</data>
+      <data key="name">need-to-add</data>
       <data key="namespace">ManagedCluster Namespace</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
@@ -46,14 +46,14 @@
       <data key="onManaged">true</data>
     </node>
     <node id="7">
-      <data key="entity">Intermediate Resource</data>
+      <data key="entity">IntermediateResource</data>
       <data key="name">Policy</data>
       <data key="userCreated">false</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
     </node>
     <node id="8">
-      <data key="entity">Custom Resource</data>
+      <data key="entity">CustomResource</data>
       <data key="name">PolicyAutomation</data>
       <data key="userCreated">true</data>
       <data key="type">Ansible</data>
@@ -61,28 +61,28 @@
       <data key="onManaged">false</data>
     </node>
     <node id="9">
-      <data key="entity">Custom Resource</data>
+      <data key="entity">CustomResource</data>
       <data key="name">PlacementBinding</data>
       <data key="userCreated">true</data>
       <data key="onHub">true</data>
       <data key="onManaged">false</data>
     </node>
     <node id="10">
-      <data key="entity">Custom Resource</data>
+      <data key="entity">CustomResource</data>
       <data key="name">Placement</data>
       <data key="userCreated">true</data>
       <data key="onHub">true</data>
       <data key="onManaged">false</data>
     </node>
     <node id="18">
-      <data key="entity">Custom Resource</data>
+      <data key="entity">CustomResource</data>
       <data key="name">CertificatePolicy</data>
       <data key="type">Policy Template</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
     </node>
     <node id="19">
-      <data key="entity">Custom Resource</data>
+      <data key="entity">CustomResource</data>
       <data key="name">ConfigurationPolicy</data>
       <data key="type">Policy Template</data>
       <data key="onHub">true</data>
@@ -103,7 +103,7 @@
       <data key="onManaged">true</data>
     </node>
     <node id="22">
-      <data key="entity">Custom Resource</data>
+      <data key="entity">CustomResource</data>
       <data key="name">IAMPolicy</data>
       <data key="type">Policy Template</data>
       <data key="onHub">true</data>

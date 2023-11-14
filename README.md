@@ -24,22 +24,59 @@
     - And even for arguements sake, let us assume we try to extract KG from the documents. We can use existing `NLP models` to help us. We will see that these extracted KG will be dirty and incomplete. They will be need to be reviewed by developers and cleansed and more information added. It will be huge expenditure of time and resources.
 
 ## To run:
+
+### Optional but highly recommended Step
+1. Download the docker for Neo4j Graph database on your machine and start it
+    ```
+    docker pull neo4j:5.13.0-community-ubi8
+    ```
+1. And then start the Neo4j DB
+    ```
+    docker run \
+        --restart always \
+        --publish=7474:7474 --publish=7687:7687 \
+        neo4j:5.13.0-community-ubi8
+    ```
+1. Finally log into Ne04j and change the [password](https://neo4j.com/docs/operations-manual/current/docker/introduction/#docker-image) . As explained in the link
+    1. Log into http://localhost:7474
+    1. Log in using usernname/password neo4j/neo4j
+    1. Changethe password. We need to use it in the .env file as explained below.
+1. Create a `.env` file under the root dir. It should contain
+    ```
+    NEO4J_PASSWORD="put your password"
+    NEO4J_URL="neo4j://localhost:7687"
+    NEO4J_DB="neo4j"
+    ```
+### Run the code
 1. `git clone` this repo.
-1. Put your xml file describing the relationship in `knowledge-graph/input` dir. This currently has 2 samples to test out the process.
+1. Put your xml file describing the relationship in `knowledge-graph/input` dir. This currently has a few samples to test out the process. Follow the conventions as [outlined](./doc/naming.md) here.
 1. ```cd knowledge-graph```
 1. ```python src/main.py```
 1. This will create the graphs in knowledge-graph/output dir
-1. Where will these be uploaded/saved?
+1. If Neo4j is running on your laptop, these graphs will also be saved into the Neo4j graph DB. Remember, the local docker is stateless. So it will lose all when restarted. However, when you run the code again, it will be populated.
+
+### Visualizing in Neo4j
+1. Log into http://localhost:7474 using your new password.
+1. Type in this query in the command prompt
+    ```
+    match(p) return(p)
+
+    ```
+    This essenntially is equivalent to `show all`. A read of [this](https://neo4j.com/docs/cypher-manual/current/queries/concepts/) will not take more than a few minutes but will be of immense help.
+1. Now you can zoom into the graph and click on each node and relationships to make sure they are what you want it to be.
+1. If not, delete the data by running this query in the command prompt
+    ```
+    DETACH DELETE n
+
+    ```
+    - Then change your xml.
+    - Run the main.py again. 
+    - And examine the new data in Neo4j browser.
+
 
 ## Guidelines for conventions to be followed for ACM
 
-### Why do we need these Guidelines
-
-### What are the current list of Nodes
-
-### What are curret list of Node attributes
-
-### What are the current list of edges aka relationships
+Refer [here](./doc/naming.md)
 
 ## Detailed discussion on Knowledge Graph and documentation
 [Knowledge graphs: Introduction, history, and perspectives](https://onlinelibrary.wiley.com/doi/10.1002/aaai.12033) - a very easy to read and good paper.
