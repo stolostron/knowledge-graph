@@ -1,68 +1,88 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
   <key id="d8" for="edge" attr.name="relation" attr.type="string" />
-  <key id="d3" for="node" attr.name="location" attr.type="string" />
-  <key id="d2" for="node" attr.name="Kubetype" attr.type="string" />
+  <key id="d10" for="node" attr.name="onManaged" attr.type="string" />
+  <key id="d9" for="node" attr.name="namespace" attr.type="string" /> 
+  <key id="d3" for="node" attr.name="onHub" attr.type="string" />
+  <key id="d2" for="node" attr.name="type" attr.type="string" />
   <key id="d1" for="node" attr.name="name" attr.type="string" />
   <key id="d0" for="node" attr.name="entity" attr.type="string" />
   <graph edgedefault="directed">
     <node id="1">
-      <data key="d0">Person</data>
+      <data key="d0">Users</data>
       <data key="d1">User</data>
     </node>
     <node id="2">
       <data key="d0">API</data>
       <data key="d1">MCO-CR</data>
       <data key="d2">Custom Resource</data>
-      <data key="d3">Hub Cluster</data>
+      <data key="d9">cluster-scoped</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
     </node>
     <node id="3">
       <data key="d0">IntermediateResources</data>
       <data key="d1">ManifestWork</data>
       <data key="d2">Custom Resource</data>
-      <data key="d3">Hub Cluster</data>
+      <data key="d9">managed-cluster-namespace</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
     </node>
     <node id="4">
       <data key="d0">Processor</data>
       <data key="d1">WorkAgent</data>
       <data key="d2">Controller</data>
-      <data key="d3">Managed Cluster</data>
+      <data key="d9">open-cluster-management-agent</data>
+      <data key="d3">false</data>
+      <data key="d10">true</data>
     </node>
     <node id="5">
       <data key="d0">Processor</data>
       <data key="d1">Observability Endpoint Operator</data>
       <data key="d2">Controller</data>
-      <data key="d3">Managed Cluster</data>
+      <data key="d9">open-cluster-management-agent-addon-observability</data>
+      <data key="d3">false</data>
+      <data key="d10">true</data>
     </node>
     <node id="6">
       <data key="d0">API</data>
       <data key="d1">cluster-monitoring-config</data>
       <data key="d2">Configmap</data>
-      <data key="d3">Managed Cluster</data>
+      <data key="d9">openshift-monitoring</data>
+      <data key="d3">false</data>
+      <data key="d10">true</data>
     </node>
     <node id="7">
       <data key="d0">IntermediateResources</data>
       <data key="d1">alert-manager-hub-tls-secret</data>
       <data key="d2">Secret</data>
-      <data key="d3">Managed Cluster</data>
+      <data key="d9">openshift-monitoring</data>
+      <data key="d3">false</data>
+      <data key="d10">true</data>
     </node>
     <node id="8">
       <data key="d0">Processor</data>
       <data key="d1">Prometheus</data>
       <data key="d2">Pod</data>
-      <data key="d3">Managed Cluster</data>
+      <data key="d9">openshift-monitoring</data>
+      <data key="d3">false</data>
+      <data key="d10">true</data>
     </node>
     <node id="9">
       <data key="d0">Gateway</data>
       <data key="d1">Observatorium-api-gateway</data>
       <data key="d2">Route</data>
-      <data key="d3">Hub Cluster</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
     </node>
     <node id="10">
       <data key="d0">Processor</data>
       <data key="d1">alert-manager</data>
       <data key="d2">Pod</data>
-      <data key="d3">Hub Cluster</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
     </node>        
     <edge source="1" target="2">
       <data key="d8">CREATES</data>
