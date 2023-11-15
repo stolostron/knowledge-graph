@@ -21,7 +21,7 @@
       <data key="d10">false</data>
     </node>
     <node id="3">
-      <data key="d0">IntermediateResources</data>
+      <data key="d0">IntermediateResource</data>
       <data key="d1">ManifestWork</data>
       <data key="d2">Custom Resource</data>
       <data key="d9">managed-cluster-namespace</data>
@@ -53,7 +53,7 @@
       <data key="d10">true</data>
     </node>
     <node id="7">
-      <data key="d0">IntermediateResources</data>
+      <data key="d0">IntermediateResource</data>
       <data key="d1">alert-manager-hub-tls-secret</data>
       <data key="d2">Secret</data>
       <data key="d9">openshift-monitoring</data>

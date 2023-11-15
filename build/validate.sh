@@ -3,7 +3,7 @@
 rc=0
 files=$(ls input)
 for file in $files; do
-	label=$(xmllint --nocdata --xpath "//*[local-name()='graphml']/*[local-name()='key'][@for='node'][@attr.name='label']/@id" input/$file | awk -F\" '{print $2}')
+	label=$(xmllint --nocdata --xpath "//*[local-name()='graphml']/*[local-name()='key'][@for='node'][@attr.name='entity']/@id" input/$file | awk -F\" '{print $2}')
 	#echo "Label=$label"
 	nodes=$(xmllint --nocdata --xpath "//*[local-name()='graph']/*[local-name()='node']/*[local-name()='data'][@key=\"$label\"]/text()" "input/$file" | sort | uniq)
 
