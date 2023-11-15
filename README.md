@@ -66,7 +66,7 @@
 1. Now you can zoom into the graph and click on each node and relationships to make sure they are what you want it to be.
 1. If not, delete the data by running this query in the command prompt
     ```
-    DETACH DELETE n
+    match(p) detach delete(p)
 
     ```
     - Then change your xml.

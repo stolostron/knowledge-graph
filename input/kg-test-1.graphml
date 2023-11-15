@@ -8,7 +8,7 @@
   <key id="d3" for="node" attr.name="compromised" attr.type="boolean" />
   <key id="d2" for="node" attr.name="age" attr.type="int" />
   <key id="d1" for="node" attr.name="name" attr.type="string" />
-  <key id="d0" for="node" attr.name="label" attr.type="string" />
+  <key id="d0" for="node" attr.name="entity" attr.type="string" />
   <graph edgedefault="directed">
     <node id="1">
       <data key="d0">Person</data>

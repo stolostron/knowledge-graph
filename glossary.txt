@@ -1,17 +1,16 @@
 # Add only unique entries that don't duplicate the meaning of an existing entry
+API
 Category
-CertificatePolicy
-ConfigurationPolicy
 CreditCard
-Deployment
-Event
-IAMPolicy
+CustomResource
+Gateway
+IntermediateResource
 Person
-Placement
-PlacementBinding
-Policy
-PolicyAutomation
+Process
+Processor
 Pos
+Repository
 SocialMedia
 Store
+Test
 Transaction

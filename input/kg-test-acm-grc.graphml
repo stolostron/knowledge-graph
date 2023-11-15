@@ -32,8 +32,8 @@
       <data key="onManaged">true</data>
     </node>
     <node id="4">
-      <data key="entity">Event</data>
-      <data key="name">need-to-add</data>
+      <data key="entity">CustomResource</data>
+      <data key="name">Event</data>
       <data key="namespace">ManagedCluster Namespace</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
