@@ -68,7 +68,7 @@ def print_graph(driver):
     print("######################################################################")
 
 def create_node_tx(driver, entityName, name,id,params):
-    params["id"] = id
+    #params["id"] = id
     # Creating all inclusive properties that also has the id
     # Cypher will take it
     # CREATE (n:Person $props) RETURN n
@@ -86,11 +86,13 @@ def create_node_tx(driver, entityName, name,id,params):
 
 
 
-def create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, edgeLabel):
-    query = ("MATCH (sourceNode {id: $sourceNode, name:$sourceNodeName}), (destNode {id: $destNode, name:$destNodeName}) "
-            "CREATE (sourceNode)-[:" + edgeLabel + "]->(destNode) ")
+def create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, sourceEntityName, destEntityName, edgeLabel):
+        #query = ("MATCH (sourceNode {id: $sourceNode, name:$sourceNodeName}), (destNode {id: $destNode, name:$destNodeName}) "
+    query = ("MATCH (sourceNode {entity: $sourceEntityName, name:$sourceNodeName}), (destNode {entity: $destEntityName, name:$destNodeName}) "      
+                "CREATE (sourceNode)-[:" + edgeLabel + "]->(destNode) ")
     records = driver.execute_query(query, sourceNode=sourceNode,destNode=destNode,
-                                   sourceNodeName=sourceNodeName,destNodeName=destNodeName)
+                                   sourceNodeName=sourceNodeName,destNodeName=destNodeName,
+                                   sourceEntityName=sourceEntityName,destEntityName=destEntityName)
     for record in records:
             print(record)
      
@@ -98,17 +100,26 @@ def create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, e
 def get_node_name(sourceNode, destNode, propGraph):
     sourceNodeName = ""
     destNodeName = ""
+    sourceEntityName = ""
+    destEntityName = ""
     for node in propGraph.nodes(data=True):
-        if node[1].get("id") == sourceNode:
+        #print(node)
+        #if node[0].get("id") == sourceNode:
+        if node[0] == sourceNode:    
             #print(node[1].get("name"))
             sourceNodeName = node[1].get("name")
-        if node[1].get("id") == destNode:
+            sourceEntityName = node[1].get("entity")
+            #print(sourceNode,sourceNodeName, sourceEntityName)
+        #if node[0].get("id") == destNode:
+        if node[0] == destNode:
             #print(node[1].get("name"))
             destNodeName = node[1].get("name")
+            destEntityName = node[1].get("entity")
+            #print(destNode,destNodeName,destEntityName)
          
          
-    #print(sourceNodeName,destNodeName)
-    return sourceNodeName, destNodeName
+    #print("-------",sourceNodeName,destNodeName,sourceEntityName, destEntityName)
+    return sourceNodeName, destNodeName, sourceEntityName, destEntityName
 
           
 
@@ -140,8 +151,8 @@ def add_graph(driver,graphList):
             #print(sourceNode,"->",destNode)
             edgeLabel = list(edge[2].values())[0]
             #print(edgeLabel)
-            sourceNodeName, destNodeName = get_node_name(sourceNode, destNode, propGraph)
-            create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, edgeLabel)
+            sourceNodeName, destNodeName,sourceEntityName, destEntityName = get_node_name(sourceNode, destNode, propGraph)
+            create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, sourceEntityName, destEntityName, edgeLabel)
             print("")
         print("######################################################################")
             
