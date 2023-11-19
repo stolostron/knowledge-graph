@@ -67,7 +67,20 @@ def print_graph(driver):
         print(record["p"])
     print("######################################################################")
 
+def regenrate_param_string(params):
+     # Creating a new string-dictionary with unquoted keys
+    param_string = ""
+    for key,value in params.items():
+        if type(value) != str:
+            value = str(value)
+            param_string += key + ": " + value + ", "
+        else:
+            param_string += key + ": '" + value + "', "
+    #to remove the last comma and space
+    return param_string[:-2]
+
 def create_node_tx(driver, entityName, name,id,params):
+
     #params["id"] = id
     # Creating all inclusive properties that also has the id
     # Cypher will take it
@@ -75,26 +88,42 @@ def create_node_tx(driver, entityName, name,id,params):
     # The above query will work and that is what we emulate here
     props = {"props": params}
 
+    paramString = regenrate_param_string(params)
+    #print(paramString)
+
     #query = ("CREATE (n:"+entityName+" {name: $name, id: $id}) "
-    query = ("CREATE (n:"+entityName+" $props) "                              
-            "RETURN n.id AS node_id")
-    records = driver.execute_query(query, name=name,id=id,props=props["props"])
+    # Exception encountered:  {code: Neo.ClientError.Statement.SyntaxError} 
+    # {message: Parameter maps cannot be used in `MERGE` patterns (use a literal map instead, e.g. `{id: $props.id}`)
+    
+    #query = ("CREATE (n:"+entityName+" $props) "                              
+    #        "RETURN n.id AS node_id")
+    #records = driver.execute_query(query, name=name,id=id,props=props["props"])
+
+    query = ("MERGE (n:"+entityName+" {"+paramString+"}) "                              
+            "RETURN n.name")
+    records,summary, key = driver.execute_query(query, name=name,id=id)
+
     #record = result.single()
     for record in records:
             print(record)
-    #return record["node_id"]
+    #print(summary)
+    #print(key)
+    #return records
 
 
 
 def create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, sourceEntityName, destEntityName, edgeLabel):
         #query = ("MATCH (sourceNode {id: $sourceNode, name:$sourceNodeName}), (destNode {id: $destNode, name:$destNodeName}) "
     query = ("MATCH (sourceNode {entity: $sourceEntityName, name:$sourceNodeName}), (destNode {entity: $destEntityName, name:$destNodeName}) "      
-                "CREATE (sourceNode)-[:" + edgeLabel + "]->(destNode) ")
-    records = driver.execute_query(query, sourceNode=sourceNode,destNode=destNode,
+                "MERGE (sourceNode)-[r:" + edgeLabel + "]->(destNode) "
+                "RETURN sourceNode.name, destNode.name,type(r)")
+    records,summary, key = driver.execute_query(query, sourceNode=sourceNode,destNode=destNode,
                                    sourceNodeName=sourceNodeName,destNodeName=destNodeName,
                                    sourceEntityName=sourceEntityName,destEntityName=destEntityName)
     for record in records:
             print(record)
+    #print(summary)
+    #print(key)
      
 
 def get_node_name(sourceNode, destNode, propGraph):
@@ -139,7 +168,7 @@ def add_graph(driver,graphList):
             else:
                 #print(node[1]['entity']) 
                 ename = node[1]['entity']
-            print(ename)
+            print(ename,"-",node[1]['name'])
             create_node_tx(driver, ename,node[1]['name'],node[0],node[1])
 
 
@@ -153,7 +182,7 @@ def add_graph(driver,graphList):
             #print(edgeLabel)
             sourceNodeName, destNodeName,sourceEntityName, destEntityName = get_node_name(sourceNode, destNode, propGraph)
             create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, sourceEntityName, destEntityName, edgeLabel)
-            print("")
+            #print("")
         print("######################################################################")
             
 
@@ -173,7 +202,7 @@ def loadGraph(filename):
         print(list(propGraph.nodes(data=True)))
         print("Number of Nodes: ",propGraph.number_of_nodes())
         print("Size of Graph: ",propGraph.size())
-        print("")
+        # param_string += key + ": '" + value + "', "print("")
         return propGraph
 
 def saveGraph(propGraph,filename):
