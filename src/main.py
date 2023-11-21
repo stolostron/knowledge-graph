@@ -211,8 +211,8 @@ def saveGraph(propGraph,filename):
         current_dir = os.path.dirname(os.path.abspath(__file__))
         #pos = nx.spectral_layout(propGraph) 
         #pos = nx.shell_layout(propGraph)
-        #pos = nx.spring_layout(propGraph)
-        pos = nx.planar_layout(propGraph)
+        pos = nx.spring_layout(propGraph)
+        #pos = nx.planar_layout(propGraph)
 
         plt.figure(1, figsize=(12,10), dpi=100)
         nx.draw(

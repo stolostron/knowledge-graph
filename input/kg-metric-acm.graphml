@@ -95,9 +95,6 @@
     <edge source="1" target="2">
       <data key="d8">CREATES</data>
     </edge>
-    <edge source="2" target="3">
-      <data key="d8">CREATES</data>
-    </edge>
     <edge source="3" target="4">
       <data key="d8">WATCHEDBY</data>
     </edge>
@@ -114,10 +111,7 @@
       <data key="d8">CREATES</data>
     </edge>
     <edge source="5" target="7">
-      <data key="d8">CONNFIGURES</data>
-    </edge>
-    <edge source="6" target="7">
-      <data key="d8">REFERS</data>
+      <data key="d8">CONFIGURES</data>
     </edge>
     <edge source="6" target="8">
       <data key="d8">CONFIGURES</data>
@@ -125,7 +119,7 @@
       <edge source="7" target="8">
       <data key="d8">QUERIES</data>
     </edge>   
-    <edge source="8" target="9">
+    <edge source="7" target="9">
       <data key="d8">FORWARDS</data>
     </edge> 
     <edge source="9" target="10">
