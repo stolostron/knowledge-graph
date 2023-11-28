@@ -1,0 +1,175 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="relation" for="edge" attr.name="relation" attr.type="string" />
+  <key id="onManaged" for="node" attr.name="onManaged" attr.type="string" />
+  <key id="namespace" for="node" attr.name="namespace" attr.type="string" /> 
+  <key id="onHub" for="node" attr.name="onHub" attr.type="string" />
+  <key id="type" for="node" attr.name="type" attr.type="string" />
+  <key id="name" for="node" attr.name="name" attr.type="string" />
+  <key id="entity" for="node" attr.name="entity" attr.type="string" />
+  <key id="group" for="node" attr.name="group" attr.type="string" />
+  <key id="kind" for="node" attr.name="kind" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="1">
+      <data key="entity">Users</data>
+      <data key="name">User</data>
+    </node>
+    <node id="2">
+      <data key="entity">Processor</data>
+      <data key="name">ImportController</data>
+      <data key="type">Controller</data>
+      <data key="namespace">multicluster-engine</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>
+    <node id="3">
+      <data key="entity">Processor</data>
+      <data key="name">KlusterletOperator</data>
+      <data key="type">Controller</data>
+      <data key="namespace">open-cluster-management-agent</data>
+      <data key="onHub">false</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="4">
+      <data key="entity">IntermediateResource</data>
+      <data key="name">bootstrap-hub-kubeconfig</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">Secret</data>
+      <data key="namespace">open-cluster-management-agent</data>
+      <data key="onHub">false</data>
+      <data key="onManaged">true</data>
+    </node>    
+    <node id="5">
+      <data key="entity">Processor</data>
+      <data key="name">KlusterletAgent</data>
+      <data key="type">Controller</data>
+      <data key="namespace">open-cluster-management-agent</data>
+      <data key="onHub">false</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="6">
+      <data key="entity">IntermediateResource</data>
+      <data key="name">{cluster-name}-{unique-id}</data>
+      <data key="type">Kubernetes</data>
+      <data key="group">certificates.k8s.io</data>
+      <data key="kind">CertificateSigningRequest</data>
+      <data key="namespace">cluster-scoped</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>
+    <node id="7">
+      <data key="entity">Processor</data>
+      <data key="name">RegistrationHubController</data>
+      <data key="type">Controller</data>
+      <data key="namespace">open-cluster-management-hub</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>
+    <node id="8">
+      <data key="entity">IntermediateResource</data>
+      <data key="name">hub-kubeconfig-secret</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">Secret</data>
+      <data key="namespace">open-cluster-management-agent</data>
+      <data key="onHub">false</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="9">
+      <data key="entity">IntermediateResource</data>
+      <data key="name">managed-cluster-lease</data>
+      <data key="type">Kubernetes</data>
+      <data key="group">coordination.k8s.io</data>
+      <data key="kind">Lease</data>
+      <data key="namespace">{cluster-name}</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>    
+    <node id="10">
+      <data key="entity">API</data>
+      <data key="name">{cluster-name}</data>
+      <data key="type">Kubernetes</data>
+      <data key="group">cluster.open-cluster-management.io</data>
+      <data key="kind">ManagedCluster</data>
+      <data key="namespace">cluster-scoped</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">false</data>
+    </node>
+    <node id="11">
+      <data key="entity">IntermediateResource</data>
+      <data key="name">klusterlet</data>
+      <data key="type">Kubernetes</data>
+      <data key="group">operator.open-cluster-management.io</data>
+      <data key="kind">Klusterlet</data>
+      <data key="namespace">cluster-scoped</data>
+      <data key="onHub">false</data>
+      <data key="onManaged">true</data>
+    </node>
+
+    <edge source="1" target="3">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="1" target="4">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="1" target="10">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="1" target="11">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="2" target="3">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="2" target="4">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="3" target="5">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="3" target="4">
+      <data key="relation">Reads</data>
+    </edge>
+    <edge source="3" target="11">
+      <data key="relation">Watches</data>
+    </edge>
+    <edge source="4" target="5">
+      <data key="relation">Configures</data>
+    </edge>
+    <edge source="5" target="4">
+      <data key="relation">Watches</data>
+    </edge>
+    <edge source="5" target="6">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="5" target="8">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="5" target="6">
+      <data key="relation">Watches</data>
+    </edge>
+    <edge source="5" target="8">
+      <data key="relation">Watches</data>
+    </edge>
+    <edge source="7" target="10">
+      <data key="relation">Watches</data>
+    </edge>
+    <edge source="7" target="6">
+      <data key="relation">Watches</data>
+    </edge>
+    <edge source="7" target="6">
+      <data key="relation">Approves</data>
+    </edge>
+    <edge source="7" target="9">
+      <data key="relation">Creates</data>
+    </edge>
+    <edge source="5" target="9">
+      <data key="relation">Renews</data>
+    </edge>
+    <edge source="5" target="8">
+      <data key="relation">Rotates</data>
+    </edge>
+    <edge source="5" target="10">
+      <data key="relation">Updates</data>
+    </edge>
+  </graph>
+</graphml>
