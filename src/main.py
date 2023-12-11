@@ -89,7 +89,7 @@ def create_node_tx(driver, entityName, name,id,params):
     props = {"props": params}
 
     paramString = regenrate_param_string(params)
-    #print(paramString)
+    #print('######',paramString)
 
     #query = ("CREATE (n:"+entityName+" {name: $name, id: $id}) "
     # Exception encountered:  {code: Neo.ClientError.Statement.SyntaxError} 
@@ -112,14 +112,14 @@ def create_node_tx(driver, entityName, name,id,params):
 
 
 
-def create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, sourceEntityName, destEntityName, edgeLabel):
-        #query = ("MATCH (sourceNode {id: $sourceNode, name:$sourceNodeName}), (destNode {id: $destNode, name:$destNodeName}) "
-    query = ("MATCH (sourceNode {entity: $sourceEntityName, name:$sourceNodeName}), (destNode {entity: $destEntityName, name:$destNodeName}) "      
+def create_edge_tx(driver, sourceProp, destProp,edgeLabel):
+    
+    query = ("MATCH (sourceNode "+sourceProp+"), (destNode "+destProp+") "      
                 "MERGE (sourceNode)-[r:" + edgeLabel + "]->(destNode) "
                 "RETURN sourceNode.name, destNode.name,type(r)")
-    records,summary, key = driver.execute_query(query, sourceNode=sourceNode,destNode=destNode,
-                                   sourceNodeName=sourceNodeName,destNodeName=destNodeName,
-                                   sourceEntityName=sourceEntityName,destEntityName=destEntityName)
+    #records,summary, key = driver.execute_query(query, sourceNode=sourceNode,destNode=destNode)
+    records,summary, key = driver.execute_query(query)
+    
     for record in records:
             print(record)
     #print(summary)
@@ -153,11 +153,12 @@ def get_node_name(sourceNode, destNode, propGraph):
           
 
 def add_graph(driver,graphList):
+    lookupDict = {}
     for propGraph in graphList:
         print("Adding Graph to neo4j: ###########################################")
         #print(type(propGraph))
         for node in propGraph.nodes(data=True):
-            #print(node)
+            print(node)
             #print(type(node))
             #print(node[1])
             #print(node[0])
@@ -170,18 +171,18 @@ def add_graph(driver,graphList):
                 ename = node[1]['entity']
             print(ename,"-",node[1]['name'])
             create_node_tx(driver, ename,node[1]['name'],node[0],node[1])
-
+            lookupDict[node[0]] = "{"+regenrate_param_string(node[1])+"}"
 
         for edge in propGraph.edges(data=True):
             #print(edge)
             #print(type(edge))
             sourceNode=edge[0]
             destNode=edge[1]
-            #print(sourceNode,"->",destNode)
+            print(sourceNode,"->",destNode)
             edgeLabel = list(edge[2].values())[0]
             #print(edgeLabel)
-            sourceNodeName, destNodeName,sourceEntityName, destEntityName = get_node_name(sourceNode, destNode, propGraph)
-            create_edge_tx(driver, sourceNode, destNode, sourceNodeName, destNodeName, sourceEntityName, destEntityName, edgeLabel)
+            #sourceNodeName, destNodeName,sourceEntityName, destEntityName = get_node_name(sourceNode, destNode, propGraph)
+            create_edge_tx(driver, lookupDict[sourceNode],lookupDict[destNode],edgeLabel)
             #print("")
         print("######################################################################")
             
