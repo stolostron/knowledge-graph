@@ -1,17 +1,10 @@
 # Add only unique entries that don't duplicate the meaning of an existing entry
 API
-Category
-CreditCard
 CustomResource
 Gateway
 IntermediateResource
-Person
 Process
 Processor
-Pos
 Repository
-SocialMedia
-Store
 Test
-Transaction
 Users
