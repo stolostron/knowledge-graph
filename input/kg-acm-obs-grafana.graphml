@@ -70,7 +70,7 @@
     </node>
     <node id="9">
       <data key="d0">Processor</data>
-      <data key="d1">Thanos Store</data>
+      <data key="d1">Thanos Store Gateway</data>
       <data key="d2">Pod</data>
       <data key="d9">open-cluster-management-observability</data>
       <data key="d3">true</data>
@@ -156,6 +156,23 @@
       <data key="d3">true</data>
       <data key="d10">false</data>
     </node>
+    <node id="20">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Ruler</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+    <node id="21">
+      <data key="d0">Processor</data>
+      <data key="d1">alert-manager</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+
     <edge source="1" target="2">
       <data key="d8">CREATES</data>
     </edge>
@@ -168,8 +185,8 @@
     <edge source="4" target="3">
       <data key="d8">CREATES</data>
     </edge>
-    <edge source="2" target="4">
-      <data key="d8">WATCHEDBY</data>
+    <edge source="4" target="2">
+      <data key="d8">WATCHES</data>
     </edge>
     <edge source="7" target="6">
       <data key="d8">USES</data>
@@ -252,6 +269,30 @@
     </edge>   
     <edge source="4" target="17">
       <data key="d8">CREATES</data>
-    </edge>            
+    </edge> 
+    
+    <edge source="18" target="20">
+      <data key="d8">CREATES</data>
+    </edge>
+    <edge source="20" target="12">
+      <data key="d8">QUERIES</data>
+    </edge> 
+    <edge source="12" target="20">
+      <data key="d8">QUERIEDBY</data>
+    </edge> 
+    <edge source="20" target="10">
+      <data key="d8">STORES</data>
+    </edge>  
+    <edge source="20" target="6">
+      <data key="d8">USES</data>
+    </edge> 
+
+    <edge source="4" target="21">
+      <data key="d8">CREATES</data>
+    </edge>
+    <edge source="20" target="21">
+      <data key="d8">FORWARDS</data>
+    </edge>
+
   </graph>
 </graphml>
