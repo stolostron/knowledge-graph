@@ -1,0 +1,298 @@
+<?xml version='1.0' encoding='utf-8'?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
+  <key id="d8" for="edge" attr.name="relation" attr.type="string" />
+  <key id="d10" for="node" attr.name="onManaged" attr.type="string" />
+  <key id="d9" for="node" attr.name="namespace" attr.type="string" /> 
+  <key id="d3" for="node" attr.name="onHub" attr.type="string" />
+  <key id="d2" for="node" attr.name="type" attr.type="string" />
+  <key id="d1" for="node" attr.name="name" attr.type="string" />
+  <key id="d0" for="node" attr.name="entity" attr.type="string" />
+  <graph edgedefault="directed">
+    <node id="1">
+      <data key="d0">Users</data>
+      <data key="d1">User</data>
+    </node>
+    <node id="2">
+      <data key="d0">API</data>
+      <data key="d1">MCO-CR</data>
+      <data key="d2">Custom Resource</data>
+      <data key="d9">cluster-scoped</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+    <node id="3">
+      <data key="d0">IntermediateResource</data>
+      <data key="d1">ManifestWork</data>
+      <data key="d2">Custom Resource</data>
+      <data key="d9">managed-cluster-namespace</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+    <node id="4">
+      <data key="d0">Processor</data>
+      <data key="d1">MulticlusterObservabilityOperator</data>
+      <data key="d2">Controller</data>
+      <data key="d9">open-cluster-management</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node> 
+    <node id="5">
+      <data key="d0">IntermediateResource</data>
+      <data key="d1">ObservabilityNamespace</data>
+      <data key="d2">Namespace</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>   
+    <node id="6">
+      <data key="d0">IntermediateResource</data>
+      <data key="d1">ThanosObjectStoreSecret</data>
+      <data key="d2">Secret</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node> 
+    <node id="7">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Receiver</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>  
+    <node id="8">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Compactor</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+    <node id="9">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Store Gateway</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>     
+    <node id="10">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Object Store</data>
+      <data key="d2">Object Storage</data>
+      <data key="d9">outside-cluster</data>
+      <data key="d3">false</data>
+      <data key="d10">false</data>
+    </node>  
+    <node id="11">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Store Cache</data>
+      <data key="d2">Cache</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>  
+    <node id="12">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Querier</data>
+      <data key="d2">Cache</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node> 
+    <node id="13">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Query Frontend</data>
+      <data key="d2">Cache</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node> 
+    <node id="14">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Query Frontend Cache</data>
+      <data key="d2">Cache</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>   
+    <node id="15">
+      <data key="d0">Processor</data>
+      <data key="d1">Observatorium-api</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node> 
+    <node id="16">
+      <data key="d0">Processor</data>
+      <data key="d1">rbac-query-proxy</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>    
+    <node id="17">
+      <data key="d0">Processor</data>
+      <data key="d1">grafana</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node> 
+    <node id="18">
+      <data key="d0">Processor</data>
+      <data key="d1">ObservatoriumOperator</data>
+      <data key="d2">Controller</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+    <node id="19">
+      <data key="d0">IntermediateResource</data>
+      <data key="d1">Observatorium CR</data>
+      <data key="d2">Custom Resource</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+    <node id="20">
+      <data key="d0">Processor</data>
+      <data key="d1">Thanos Ruler</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+    <node id="21">
+      <data key="d0">Processor</data>
+      <data key="d1">alert-manager</data>
+      <data key="d2">Pod</data>
+      <data key="d9">open-cluster-management-observability</data>
+      <data key="d3">true</data>
+      <data key="d10">false</data>
+    </node>
+
+    <edge source="1" target="2">
+      <data key="d8">CREATES</data>
+    </edge>
+    <edge source="1" target="5">
+      <data key="d8">CREATES</data>
+    </edge>  
+    <edge source="1" target="6">
+      <data key="d8">CREATES</data>
+    </edge>      
+    <edge source="4" target="3">
+      <data key="d8">CREATES</data>
+    </edge>
+    <edge source="4" target="2">
+      <data key="d8">WATCHES</data>
+    </edge>
+    <edge source="7" target="6">
+      <data key="d8">USES</data>
+    </edge>
+    <edge source="7" target="10">
+      <data key="d8">STORES</data>
+    </edge> 
+    <edge source="8" target="6">
+      <data key="d8">USES</data>
+    </edge>
+    <edge source="8" target="10">
+      <data key="d8">COMPACTS</data>
+    </edge> 
+    <edge source="9" target="6">
+      <data key="d8">USES</data>
+    </edge>
+    <edge source="9" target="10">
+      <data key="d8">QUERIES</data>
+    </edge>  
+    <edge source="9" target="11">
+      <data key="d8">USES</data>
+    </edge> 
+    <edge source="12" target="9">
+      <data key="d8">QUERIES</data>
+    </edge>  
+    <edge source="12" target="7">
+      <data key="d8">QUERIES</data>
+    </edge> 
+    <edge source="13" target="12">
+      <data key="d8">QUERIES</data>
+    </edge> 
+    <edge source="13" target="14">
+      <data key="d8">USES</data>
+    </edge>   
+    <edge source="15" target="13">
+      <data key="d8">QUERIES</data>
+    </edge>  
+    <edge source="16" target="15">
+      <data key="d8">QUERIES</data>
+    </edge>  
+    <edge source="17" target="16">
+      <data key="d8">QUERIES</data>
+    </edge> 
+    <edge source="4" target="18">
+      <data key="d8">CREATES</data>
+    </edge>   
+    <edge source="4" target="19">
+      <data key="d8">CREATES</data>
+    </edge> 
+    <edge source="18" target="19">
+      <data key="d8">WATCHES</data>
+    </edge>      
+    <edge source="18" target="7">
+      <data key="d8">CREATES</data>
+    </edge>   
+    <edge source="18" target="8">
+      <data key="d8">CREATES</data>
+    </edge> 
+    <edge source="18" target="9">
+      <data key="d8">CREATES</data>
+    </edge> 
+    <edge source="18" target="11">
+      <data key="d8">CREATES</data>
+    </edge>           
+    <edge source="18" target="12">
+      <data key="d8">CREATES</data>
+    </edge> 
+    <edge source="18" target="13">
+      <data key="d8">CREATES</data>
+    </edge>
+    <edge source="18" target="14">
+      <data key="d8">CREATES</data>
+    </edge> 
+
+    <edge source="4" target="15">
+      <data key="d8">CREATES</data>
+    </edge>   
+    <edge source="4" target="16">
+      <data key="d8">CREATES</data>
+    </edge>   
+    <edge source="4" target="17">
+      <data key="d8">CREATES</data>
+    </edge> 
+    
+    <edge source="18" target="20">
+      <data key="d8">CREATES</data>
+    </edge>
+    <edge source="20" target="12">
+      <data key="d8">QUERIES</data>
+    </edge> 
+    <edge source="12" target="20">
+      <data key="d8">QUERIEDBY</data>
+    </edge> 
+    <edge source="20" target="10">
+      <data key="d8">STORES</data>
+    </edge>  
+    <edge source="20" target="6">
+      <data key="d8">USES</data>
+    </edge> 
+
+    <edge source="4" target="21">
+      <data key="d8">CREATES</data>
+    </edge>
+    <edge source="20" target="21">
+      <data key="d8">FORWARDS</data>
+    </edge>
+
+  </graph>
+</graphml>
