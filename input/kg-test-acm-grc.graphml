@@ -1,26 +1,28 @@
 <?xml version='1.0' encoding='utf-8'?>
 <graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://graphml.graphdrawing.org/xmlns/1.0/graphml.xsd">
   <key id="verb" for="edge" attr.name="verb" attr.type="string" />
-  <key id="userCreated" for="node" attr.name="userCreated" attr.type="boolean" />
   <key id="onHub" for="node" attr.name="onHub" attr.type="boolean" />
   <key id="onManaged" for="node" attr.name="onManaged" attr.type="boolean" />
   <key id="name" for="node" attr.name="name" attr.type="string" />
   <key id="entity" for="node" attr.name="entity" attr.type="string" />
   <key id="type" for="node" attr.name="type" attr.type="string" />
+  <key id="kind" for="node" attr.name="kind" attr.type="string" />
+  <key id="group" for="node" attr.name="group" attr.type="string" />
   <key id="namespace" for="node" attr.name="namespace" attr.type="string" />
   <graph edgedefault="directed">
     <node id="1">
       <data key="entity">Processor</data>
       <data key="name">grc-policy-propagator</data>
-      <data key="userCreated">false</data>
       <data key="onHub">true</data>
       <data key="onManaged">false</data>
       <data key="namespace">open-cluster-management</data>
     </node>
     <node id="2">
-      <data key="entity">CustomResource</data>
+      <data key="entity">API</data>
       <data key="name">Policy</data>
-      <data key="userCreated">true</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">policy</data>
+      <data key="group">policy.open-cluster-management.io</data>
       <data key="onHub">true</data>
       <data key="onManaged">false</data>
     </node>
@@ -32,11 +34,18 @@
       <data key="onManaged">true</data>
     </node>
     <node id="4">
-      <data key="entity">CustomResource</data>
+      <data key="entity">API</data>
       <data key="name">Event</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">Event</data>
+      <data key="group">core</data>
       <data key="namespace">ManagedCluster Namespace</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
+    </node>
+    <node id="5">
+      <data key="entity">Users</data>
+      <data key="name">User</data>
     </node>
     <node id="6">
       <data key="entity">Processor</data>
@@ -48,43 +57,63 @@
     <node id="7">
       <data key="entity">IntermediateResource</data>
       <data key="name">Policy</data>
-      <data key="userCreated">false</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">policy</data>
+      <data key="group">policy.open-cluster-management.io</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
     </node>
     <node id="8">
-      <data key="entity">CustomResource</data>
+      <data key="entity">API</data>
       <data key="name">PolicyAutomation</data>
-      <data key="userCreated">true</data>
-      <data key="type">Ansible</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">PolicyAutomation</data>
+      <data key="group">policy.open-cluster-management.io</data>
       <data key="onHub">true</data>
       <data key="onManaged">false</data>
     </node>
     <node id="9">
-      <data key="entity">CustomResource</data>
+      <data key="entity">API</data>
       <data key="name">PlacementBinding</data>
-      <data key="userCreated">true</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">PlacementBinding</data>
+      <data key="group">policy.open-cluster-management.io</data>
       <data key="onHub">true</data>
       <data key="onManaged">false</data>
     </node>
     <node id="10">
-      <data key="entity">CustomResource</data>
+      <data key="entity">API</data>
       <data key="name">Placement</data>
-      <data key="userCreated">true</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">Placement</data>
+      <data key="group">cluster.open-cluster-management.io</data>
       <data key="onHub">true</data>
       <data key="onManaged">false</data>
     </node>
+    <node id="11">
+      <data key="entity">API</data>
+      <data key="name">Object</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">Object</data>
+      <data key="group">Any</data>
+      <data key="onHub">true</data>
+      <data key="onManaged">true</data>
+    </node>
     <node id="18">
-      <data key="entity">CustomResource</data>
+      <data key="entity">IntermediateResource</data>
       <data key="name">CertificatePolicy</data>
-      <data key="type">Policy Template</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">CertificatePolicy</data>
+      <data key="group">policy.open-cluster-management.io</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
     </node>
     <node id="19">
-      <data key="entity">CustomResource</data>
+      <data key="entity">IntermediateResource</data>
       <data key="name">ConfigurationPolicy</data>
-      <data key="type">Policy Template</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">ConfigurationPolicy</data>
+      <data key="group">policy.open-cluster-management.io</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
     </node>
@@ -103,74 +132,109 @@
       <data key="onManaged">true</data>
     </node>
     <node id="22">
-      <data key="entity">CustomResource</data>
+      <data key="entity">IntermediateResource</data>
       <data key="name">IAMPolicy</data>
-      <data key="type">Policy Template</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">IAMPolicy</data>
+      <data key="group">policy.open-cluster-management.io</data>
       <data key="onHub">true</data>
       <data key="onManaged">true</data>
     </node>
     <edge source="1" target="2">
-      <data key="verb">Watches</data>
+      <data key="verb">WATCHES</data>
     </edge>
     <edge source="1" target="7">
-      <data key="verb">Watches</data>
+      <data key="verb">WATCHES</data>
     </edge>
     <edge source="1" target="8">
-      <data key="verb">Watches</data>
+      <data key="verb">WATCHES</data>
     </edge>
     <edge source="1" target="9">
-      <data key="verb">Watches</data>
+      <data key="verb">WATCHES</data>
     </edge>
     <edge source="1" target="10">
-      <data key="verb">Watches</data>
+      <data key="verb">WATCHES</data>
     </edge>
-    <edge source="6" target="7">
-      <data key="verb">Watches</data>
+    <edge source="3" target="7">
+      <data key="verb">WATCHES</data>
     </edge>
     <edge source="1" target="2">
-      <data key="verb">Updates</data>
+      <data key="verb">UPDATES</data>
     </edge>
     <edge source="1" target="7">
-      <data key="verb">Updates</data>
+      <data key="verb">CREATES</data>
     </edge>
-    <edge source="6" target="7">
-      <data key="verb">Updates</data>
-    </edge>
-    <edge source="6" target="19">
-      <data key="verb">Watches</data>
-    </edge>
-    <edge source="20" target="18">
-      <data key="verb">Watches</data>
-    </edge>
-    <edge source="21" target="22">
-      <data key="verb">Watches</data>
+    <edge source="3" target="7">
+      <data key="verb">UPDATES</data>
     </edge>
     <edge source="6" target="19">
-      <data key="verb">Updates</data>
+      <data key="verb">WATCHES</data>
     </edge>
     <edge source="20" target="18">
-      <data key="verb">Updates</data>
+      <data key="verb">WATCHES</data>
     </edge>
     <edge source="21" target="22">
-      <data key="verb">Updates</data>
+      <data key="verb">WATCHES</data>
+    </edge>
+    <edge source="6" target="19">
+      <data key="verb">UPDATES</data>
+    </edge>
+    <edge source="20" target="18">
+      <data key="verb">UPDATES</data>
+    </edge>
+    <edge source="21" target="22">
+      <data key="verb">UPDATES</data>
     </edge>
     <edge source="3" target="19">
-      <data key="verb">Updates</data>
+      <data key="verb">CREATES</data>
     </edge>
     <edge source="3" target="18">
-      <data key="verb">Updates</data>
+      <data key="verb">CREATES</data>
     </edge>
     <edge source="3" target="22">
-      <data key="verb">Updates</data>
+      <data key="verb">CREATES</data>
     </edge>
     <edge source="6" target="4">
-      <data key="verb">Creates</data>
+      <data key="verb">CREATES</data>
     </edge>
     <edge source="20" target="4">
-      <data key="verb">Creates</data>
+      <data key="verb">CREATES</data>
+    </edge>
+    <edge source="5" target="2">
+      <data key="verb">CREATES</data>
+    </edge>
+    <edge source="5" target="8">
+      <data key="verb">CREATES</data>
+    </edge>
+    <edge source="5" target="9">
+      <data key="verb">CREATES</data>
+    </edge>
+    <edge source="5" target="10">
+      <data key="verb">CREATES</data>
     </edge>
     <edge source="21" target="4">
-      <data key="verb">Creates</data>
+      <data key="verb">CREATES</data>
+    </edge>
+    <edge source="3" target="4">
+      <data key="verb">WATCHES</data>
+    </edge>
+    <edge source="20" target="11">
+      <data key="verb">GETS</data>
+    </edge>
+    <edge source="21" target="11">
+      <data key="verb">GETS</data>
+    </edge>
+    <edge source="6" target="11">
+      <data key="verb">GETS</data>
+    </edge>
+    <edge source="6" target="11">
+      <data key="verb">CREATES</data>
+    </edge>
+    <edge source="6" target="11">
+      <data key="verb">UPDATES</data>
+    </edge>
+    <edge source="6" target="11">
+      <data key="verb">DELETES</data>
     </edge>
   </graph>
 </graphml>
