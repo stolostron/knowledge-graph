@@ -1,6 +1,23 @@
 # Knowledge Graph
 
-[GraphML](http://graphml.graphdrawing.org/) is XML based format for describing graphs. This schema is understood by chat-gpt. So if we were to give chat-gpt data input compliant to GraphML, it can answer questions around it. GraphML XML-based syntax supports the entire range of possible graph structure constellations including directed, undirected, mixed graphs, hypergraphs, and application-specific attributes
+## Motivation
+ACM is a complex product that is split into many components.  Many components are optional and need to be installed separately.  While we have a lot of good documentation, there are plenty of areas which we do not document well.
+1. product documentation does not include certain kinds of details because they are out of scope
+1. documentation/training materials by nature are siloed because each team produces there own
+1. so we usually do not have good grasp of flows that span teams
+1. these interconnected flows can be better expressed using Knowledge Graphs (they are simply understood by the human brain because this is usually how we draw it on a white board!)
+
+This will allow:
+1. support team to resolve problems faster without having to call the domain experts
+1. domain experts if called in will have a easier time to recall complex things they have done in the past because Knowledge graphs helps speedy recollection
+1. QE teams can raise defects which are more finely directed because they understand the problem much better
+1. and hopefully, customers are able to sort problems out themselves - if we give access to these.
+1. and if LLMs can query Knowledge graphs, [see this repo](), this could evolve to a question answering system.
+
+Bottomline - make all the players happy and reduce subscription costs. The goal for the knowledge graph is to provide domain insights that eliminate the need to go to the experts directly. 
+
+BTW there is nothing in this proposal that cannot be extended to other areas of Red Hat.
+
 
 ## Fundamental Questions
 1. What are knowledge graphs (KG) ?
@@ -15,6 +32,10 @@
 
 1. Is RDF, Property Graphs, Sparql related to this ?
     - Yes. Resource Description Framework (RDF) triple stores and labeled property graphs both provide ways to explore and graphically depict connected data. But the two are very different – and each have different strengths in different use cases. RDF data can be queried using Sparql. Property Graphs are queried using Graph Query Languages. [This](https://neo4j.com/blog/rdf-triple-store-vs-labeled-property-graph-difference/#brief-history) is a good article that talks about the subject.
+
+1. How are we going to input Knowledge Graphs and how are we going to store it ?
+    - Input: as of now, input will be in [GraphML](http://graphml.graphdrawing.org/) is XML based format for describing graphs. This schema is understood by chat-gpt. So if we were to give chat-gpt data input compliant to GraphML, it can answer questions around it. GraphML XML-based syntax supports the entire range of possible graph structure constellations including directed, undirected, mixed graphs, hypergraphs, and application-specific attributes. We could take a CSV input - but that does not help much. Ideally a custom UI in which the graphs could be created would be ideal.
+    - Store: as of now, they are stored in a Graph database.
 
 1. But we already know this - why do we need to put in extra effort and express it here ?
     - Think!! Unless we externalize this knowledge, we will be called routinely to solve the same problem again and again. And that starts to be wastage of our time.
