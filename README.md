@@ -1,18 +1,18 @@
 # Knowledge Graph
 
 ## Motivation
-ACM is a complex product that is split into many components.  Many components are optional and need to be installed separately.  While we have a lot of good documentation, there are plenty of areas which we do not document well.
+ACM is a complex product that consists of many components.  Many components are optional and need to be installed  or activated separately.  While we have a lot of good documentation, there are plenty of areas which we do not document well.
 1. product documentation does not include certain kinds of details because they are out of scope
 1. documentation/training materials by nature are siloed because each team produces there own
-1. so we usually do not have good grasp of flows that span teams
+1. Products interactions that span the different features of ACM may not be captured well today.
 1. these interconnected flows can be better expressed using Knowledge Graphs (they are simply understood by the human brain because this is usually how we draw it on a white board!)
 
 This will allow:
 1. support team to resolve problems faster without having to call the domain experts
-1. domain experts if called in will have a easier time to recall complex things they have done in the past because Knowledge graphs helps speedy recollection
+1. domain experts if called in will have an easier time to recall complex things they have done in the past because Knowledge graphs help speedy recollection
 1. QE teams can raise defects which are more finely directed because they understand the problem much better
-1. and hopefully, customers are able to sort problems out themselves - if we give access to these.
-1. and if LLMs can query Knowledge graphs, [see this repo](), this could evolve to a question answering system.
+1. Customers are able to sort problems out themselves - if we give access to these.
+1. and if LLMs can query Knowledge graphs, [see this repo](https://github.com/stolostron/acm-with-llm), this could evolve to a question answering system.
 
 Bottomline - make all the players happy and reduce subscription costs. The goal for the knowledge graph is to provide domain insights that eliminate the need to go to the experts directly. 
 
