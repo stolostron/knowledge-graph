@@ -30,17 +30,17 @@
       <data key="entity">Processor</data>
       <data key="name">policy-framework</data>
       <data key="namespace">open-cluster-management-agent-addon</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <node id="4">
-      <data key="entity">API</data>
+      <data key="entity">IntermediateResource</data>
       <data key="name">Event</data>
       <data key="type">Kubernetes</data>
       <data key="kind">Event</data>
       <data key="group">core</data>
       <data key="namespace">ManagedCluster Namespace</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <node id="5">
@@ -51,7 +51,7 @@
       <data key="entity">Processor</data>
       <data key="name">config-policy-controller</data>
       <data key="namespace">open-cluster-management-agent-addon</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <node id="7">
@@ -61,7 +61,7 @@
       <data key="kind">policy</data>
       <data key="group">policy.open-cluster-management.io</data>
       <data key="onHub">true</data>
-      <data key="onManaged">true</data>
+      <data key="onManaged">false</data>
     </node>
     <node id="8">
       <data key="entity">API</data>
@@ -91,12 +91,21 @@
       <data key="onManaged">false</data>
     </node>
     <node id="11">
-      <data key="entity">API</data>
+      <data key="entity">IntermediateResource</data>
       <data key="name">Object</data>
       <data key="type">Kubernetes</data>
       <data key="kind">Object</data>
       <data key="group">Any</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
+      <data key="onManaged">true</data>
+    </node>
+    <node id="12">
+      <data key="entity">IntermediateResource</data>
+      <data key="name">Policy</data>
+      <data key="type">Kubernetes</data>
+      <data key="kind">policy</data>
+      <data key="group">policy.open-cluster-management.io</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <node id="18">
@@ -105,7 +114,7 @@
       <data key="type">Kubernetes</data>
       <data key="kind">CertificatePolicy</data>
       <data key="group">policy.open-cluster-management.io</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <node id="19">
@@ -114,21 +123,21 @@
       <data key="type">Kubernetes</data>
       <data key="kind">ConfigurationPolicy</data>
       <data key="group">policy.open-cluster-management.io</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <node id="20">
       <data key="entity">Processor</data>
       <data key="name">cert-policy-controller</data>
       <data key="namespace">open-cluster-management-agent-addon</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <node id="21">
       <data key="entity">Processor</data>
       <data key="name">iam-policy-controller</data>
       <data key="namespace">open-cluster-management-agent-addon</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <node id="22">
@@ -137,7 +146,7 @@
       <data key="type">Kubernetes</data>
       <data key="kind">IAMPolicy</data>
       <data key="group">policy.open-cluster-management.io</data>
-      <data key="onHub">true</data>
+      <data key="onHub">false</data>
       <data key="onManaged">true</data>
     </node>
     <edge source="1" target="2">
@@ -175,6 +184,12 @@
     </edge>
     <edge source="21" target="22">
       <data key="verb">WATCHES</data>
+    </edge>
+    <edge source="3" target="12">
+      <data key="verb">CREATES</data>
+    </edge>
+    <edge source="3" target="12">
+      <data key="verb">UPDATES</data>
     </edge>
     <edge source="6" target="19">
       <data key="verb">UPDATES</data>
