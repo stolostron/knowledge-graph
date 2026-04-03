@@ -439,11 +439,28 @@ def main():
     print(f"🔗 Found {len(parser_instance.nodes)} components")
     print(f"↔️  Found {len(parser_instance.relationships)} dependencies")
     print(f"💾 Generated {output_path}")
+    
+    # Check for extension Cypher files
+    extensions_dir = output_path.parent / 'extensions'
+    extension_files = []
+    if extensions_dir.exists():
+        extension_files = sorted(extensions_dir.glob('*.cypher'))
+        if extension_files:
+            print(f"\n📦 Extensions found ({len(extension_files)}):")
+            for ext_file in extension_files:
+                print(f"   • {ext_file.name}")
+    
     print(f"\n🚀 Next steps:")
     print(f"   1. Start Neo4j database")
     print(f"   2. Open Neo4j Browser (http://localhost:7474)")
     print(f"   3. Run: :source {output_path}")
-    print(f"   4. Execute verification queries in the script")
+    if extension_files:
+        print(f"   4. Load extensions:")
+        for ext_file in extension_files:
+            print(f"      :source {ext_file}")
+        print(f"   5. Execute verification queries in the script")
+    else:
+        print(f"   4. Execute verification queries in the script")
     
     return 0
 

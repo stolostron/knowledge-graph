@@ -7,7 +7,8 @@ A comprehensive Neo4j dependency graph of Red Hat Advanced Cluster Management (R
 This repository contains the most complete dependency graph of RHACM architecture, verified against official GitHub repositories and enhanced with internal component analysis.
 
 ### Key Features
-- **Complete Component Coverage** across 7 subsystems (Overview, Governance, Application, Observability, Cluster, Search, Console)
+- **Complete Component Coverage** across 7 core subsystems (Overview, Governance, Application, Observability, Cluster, Search, Console)
+- **Virtualization Extension** - OpenShift Virtualization (CNV), MTV, CCLM, Fine-Grained RBAC (48 additional components)
 - **Semantic Relationships** (DEPENDS_ON, CONTAINS, MANAGES, etc.)
 - **Full Addon Coverage** - All RHACM addons included
 - **Hub-Spoke Architecture** with cross-cluster deployment patterns
@@ -45,7 +46,9 @@ ORDER BY ComponentCount DESC;
 ```
 ├── knowledge-graph/
 │   ├── rhacm_architecture_comprehensive_final.cypher    # 🎯 Main Neo4j import script
-│   └── sample_queries.cypher                            # 📊 Analytics queries
+│   ├── sample_queries.cypher                            # 📊 Analytics queries
+│   └── extensions/                                      # 📦 Extension Cypher files
+│       └── rhacm-virtualization.cypher                  # 🖥️ Virtualization/CNV/MTV extension
 ├── mermaid/
 │   └── rhacm-*.mmd                                      # 📊 Source Mermaid diagrams (7 files)
 ├── diagrams/                                           # 🖼️ Architectural reference images
@@ -61,6 +64,7 @@ ORDER BY ComponentCount DESC;
 ### Production Ready
 - **`knowledge-graph/rhacm_architecture_comprehensive_final.cypher`** - Complete Neo4j import script with all components
 - **`knowledge-graph/sample_queries.cypher`** - 30+ ready-to-use analytics queries for graph exploration
+- **`knowledge-graph/extensions/`** - Extension Cypher files for additional subsystems (load after base graph)
 
 ### Documentation
 - **`rhacm_architecture_implementation_guide.md`** - Ready-to-use Mermaid code with step-by-step instructions
@@ -168,6 +172,11 @@ python mermaid_to_cypher.py
 # Import to Neo4j
 cat knowledge-graph/rhacm_architecture_comprehensive_final.cypher | cypher-shell
 
+# Load extensions (if any)
+for ext in knowledge-graph/extensions/*.cypher; do
+  cat "$ext" | cypher-shell
+done
+
 # Run sample analytics queries
 cat knowledge-graph/sample_queries.cypher | cypher-shell
 ```
@@ -176,6 +185,35 @@ cat knowledge-graph/sample_queries.cypher | cypher-shell
 1. Update relevant `mermaid/rhacm-*.mmd` file with semantic relationships
 2. Run conversion tool to generate updated Cypher
 3. Update documentation with new metrics
+
+## 📦 Extensions
+
+Extensions allow adding specialized subsystems without modifying the base graph. Extension files are loaded AFTER the base graph and use `MERGE` statements to safely add components.
+
+### Available Extensions
+
+| Extension | Components | Description |
+|-----------|------------|-------------|
+| `rhacm-virtualization.cypher` | 48 | OpenShift Virtualization (CNV), MTV, CCLM, Fine-Grained RBAC |
+
+### Virtualization Extension
+
+The virtualization extension adds comprehensive coverage for:
+
+- **CNV/KubeVirt Stack**: HyperConverged Operator, KubeVirt, CDI, SSP
+- **MTV (Migration Toolkit for Virtualization)**: Forklift Operator, Controllers, Providers
+- **CCLM (Cross-Cluster Live Migration)**: Multi-cluster VM migration
+- **Fine-Grained RBAC**: ClusterPermission, ManagedClusterRoleAssignment
+- **Fleet Virtualization**: Console plugins, Tree View, VM Actions
+
+**Verification**: All components verified against live ACM 2.x cluster with CNV 4.20+ and MTV 2.10+
+
+### Adding New Extensions
+
+1. Create a new `.cypher` file in `knowledge-graph/extensions/`
+2. Use `MERGE` statements to safely add/update nodes
+3. Reference existing base graph nodes where needed
+4. Document in this README
 
 ## 📈 Coverage
 
